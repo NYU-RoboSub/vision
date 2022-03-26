@@ -8,7 +8,7 @@ camera = cv.VideoCapture(0, cv.CAP_DSHOW) if sys.platform.startswith("win") else
 if not camera.isOpened():
     print("the camera is not opened")
     exit()
-Labels=['G-man, G-man Badge, Bootlegger, Rifle']
+Labels=['G-man', 'G-man-Badge', 'Bootlegger', 'Rifle']
 for label in Labels:
     if not os.path.exists(label):
         os.mkdir(label)
@@ -36,7 +36,7 @@ for folder in Labels:
         #resizing the image to store it
         color= cv.resize(color, (500,500)) #this changes size of the photo
         #Store the image to specific label folder
-        cv.imwrite(f".\{folder}"+'/img'+str(count)+'.png',color)
+        cv.imwrite(f"./{folder}"+'/img'+str(count)+'.png',color)
         count=count+1
         #to quite the display window press 'q'
         if cv.waitKey(1) == ord('q'):
