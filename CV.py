@@ -1,7 +1,10 @@
 import cv2 as cv
 import os
+import sys
 
-camera = cv.VideoCapture(1, cv.CAP_DSHOW)
+# Windows uses DirectShow for video capture
+camera = cv.VideoCapture(0, cv.CAP_DSHOW) if sys.platform.startswith("win") else cv.VideoCapture(0)
+
 if not camera.isOpened():
     print("the camera is not opened")
     exit()
