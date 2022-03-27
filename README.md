@@ -1,3 +1,8 @@
-# Robosub
- 
-#WHEN THE CODE STARTS AND U PRESS S MAKE SURE THE ITEM IS NOT IN THE CAMERA AND THE BACKGROUND IS EMPTY THEN SHOW THE ITEM
+# Robosub Vision 👁️
+
+### Running Locally
+
+**Installing Dependencies**
+```
+make init
+```
