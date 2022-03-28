@@ -2,7 +2,6 @@
 import glob
 import os
 import sys
-
 def partition(set: str) -> None:
     current_dir = f"./data/{set}/images"
     split_pct = 10;
