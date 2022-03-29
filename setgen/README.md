@@ -4,7 +4,7 @@
 
 - [x] Sort Raw Datasets
 - [ ] Manipulation of Image and Label
-- [ ] Verification
+- [x] Verification
 - [x] Partition
 
 
