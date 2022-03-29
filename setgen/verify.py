@@ -16,9 +16,8 @@ def parse_label(path) -> list[list[float]]:
 def plot(images) -> None:
     size = int(sqrt(len(images)))
     px = 1/plt.rcParams['figure.dpi']
-    fig, axes = plt.subplots(nrows=size, ncols=size, sharex=True, sharey=True, figsize=((1080*size)*px, (720*size)*px))
+    _, axes = plt.subplots(nrows=size, ncols=size, sharex=True, sharey=True, figsize=((1080*size)*px, (720*size)*px))
     axes = axes.flatten()
-    count = 1
 
     for img, ax in zip(images, axes):
         label_file = img.replace("images", "labels").replace(".jpeg", ".txt")
@@ -40,13 +39,13 @@ def plot(images) -> None:
         tl[:,4] = tl[:,2] + tl[:,4]
         
         for l in tl:
-            obj_cls, x0, y0, x1, y1 = l
+            _, x0, y0, x1, y1 = l
             plotted_image.rectangle(((x0,y0), (x1,y1)), outline="red")
             
             plotted_image.text((x0, y0 - 10), "gman", fill="red")
      
         ax.imshow(np.array(image))
-        ax.set_title(img.replace(f"data/{set_id}/images/", ""))
+        ax.set_title(os.path.basename(img)[24:])
         ax.axis('off')
 
     plt.tight_layout()
