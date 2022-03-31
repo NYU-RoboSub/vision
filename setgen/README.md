@@ -3,7 +3,7 @@
 ### Features to implement
 
 - [x] Sort Raw Datasets
-- [ ] Manipulation of Image and Label
+- [x] Manipulation of Image and Label
 - [x] Verification
 - [x] Partition
 
