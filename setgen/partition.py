@@ -3,10 +3,10 @@ import os
 import sys
 
 def partition(set: str) -> None:
-    current_dir = f"./data/{set}/images"
+    current_dir = f"../data/{set}/images"
     split_pct = 10;
-    file_train = open(f"data/{set}/train.txt", "w")  
-    file_val = open(f"data/{set}/val.txt", "w")  
+    file_train = open(f"../data/{set}/train.txt", "w")  
+    file_val = open(f"../data/{set}/val.txt", "w")  
     counter = 1  
     index_test = round(100 / split_pct)  
     for pathAndFilename in glob.iglob(os.path.join(current_dir, "*.jpeg")):  
