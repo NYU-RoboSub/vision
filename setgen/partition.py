@@ -13,12 +13,15 @@ def partition(set: str) -> None:
         title = os.path.splitext(os.path.basename(pathAndFilename))
         if counter == index_test:
             counter = 1
-            file_val.write(f"{current_dir}/{title}.jpeg\n")
+            name = "./images/" + title[0] + ".jpeg"
+            file_val.write(name + "\n")
         else:
-            file_train.write(f"{current_dir}/{title}.jpeg\n")
+            name = "./images/" + title[0] + ".jpeg"
+            file_train.write(name + "\n")
             counter = counter + 1
     file_train.close()
     file_val.close()
+
 
 def print_usage() -> None:
     print("Usage: python partition.py <set*> <train_percentage> <val_percentage> \n")
