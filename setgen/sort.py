@@ -16,7 +16,7 @@ def sort_raw(dir: str) -> str:
     os.mkdir(f'../data/{id}/labels')
     # go through all files in the raw dir
     for f in glob.glob(dir + "/*"):
-        if f.endswith(".jpeg"):
+        if f.endswith(".jpg"):
             shutil.move(f, f'../data/{id}/images/')
             print(f"moved {f} to -> ../data/{id}/images/")
         elif f.endswith(".txt"):

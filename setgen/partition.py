@@ -9,14 +9,14 @@ def partition(set: str) -> None:
     file_val = open(f"../data/{set}/val.txt", "w")  
     counter = 1  
     index_test = round(100 / split_pct)  
-    for pathAndFilename in glob.iglob(os.path.join(current_dir, "*.jpeg")):  
+    for pathAndFilename in glob.iglob(os.path.join(current_dir, "*.jpg")):  
         title = os.path.splitext(os.path.basename(pathAndFilename))
         if counter == index_test:
             counter = 1
-            name = "./images/" + title[0] + ".jpeg"
+            name = "./images/" + title[0] + ".jpg"
             file_val.write(name + "\n")
         else:
-            name = "./images/" + title[0] + ".jpeg"
+            name = "./images/" + title[0] + ".jpg"
             file_train.write(name + "\n")
             counter = counter + 1
     file_train.close()

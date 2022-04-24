@@ -25,18 +25,18 @@ def mirror(image, label):
 
 def save(set, name, arg):
     op, image, label = arg
-    image.save(f"../data/{set}/images/{name}-{op}.jpeg")
+    image.save(f"../data/{set}/images/{name}-{op}.jpg")
     file = open(f"../data/{set}/labels/{name}-{op}.txt", "w")
-    file.write(f"0 {label[0][1]} {label[0][2]} {label[0][3]} {label[0][4]}\n")
+    file.write(f"{int(label[0][0])} {label[0][1]} {label[0][2]} {label[0][3]} {label[0][4]}\n")
     
 
 def manipulate_set(set: str) -> None:
-    # goes through all images in the set dir with extension .jpeg
-    for image_path in glob.glob(f"../data/{set}/images/" + "*.jpeg"):
+    # goes through all images in the set dir with extension .jpg
+    for image_path in glob.glob(f"../data/{set}/images/" + "*.jpg"):
         # gets the image name without extension
-        name = os.path.basename(image_path).replace(".jpeg", "")
+        name = os.path.basename(image_path).replace(".jpg", "")
         # we are getting the corresponding label file in the labels dir
-        label_path = image_path.replace("images", "labels").replace("jpeg", "txt")
+        label_path = image_path.replace("images", "labels").replace("jpg", "txt")
 
         image = Image.open(image_path)
         label = parse_label_file(open(label_path, "r"))
@@ -52,12 +52,12 @@ def manipulate_set(set: str) -> None:
         save(set, name, contrast(image, label, 40))
 
 def clear_manipulations(set: str) -> None:
-    # going through all the images in our set dir with extension .jpeg
-    for image in glob.glob(f"../data/{set}/images/*.jpeg"):
+    # going through all the images in our set dir with extension .jpg
+    for image in glob.glob(f"../data/{set}/images/*.jpg"):
         # if the file name includes any manipulation string we delete it
         if "MIRROR" in image or "BLUR" in image or "CONTRAST" in image:
             os.remove(image)
-            os.remove(image.replace("images", "labels").replace("jpeg", "txt"))
+            os.remove(image.replace("images", "labels").replace("jpg", "txt"))
 
 
 def print_usage() -> None:

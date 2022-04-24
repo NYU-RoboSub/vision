@@ -11,10 +11,6 @@ def parse_label(path) -> list[list[float]]:
     label = [x.split(" ") for x in label]
     label = [[float(y) for y in x ] for x in label]
 
-    # class x_center y_center x_width y_width
-    temp = label[0][1]
-    label[0][1] = label[0][2]
-    label[0][2] = 1 - temp
     return label
 
 
@@ -24,11 +20,11 @@ def plot(images) -> None:
     # allows us to create a inch -> pixel unit
     px = 1/plt.rcParams['figure.dpi']
     # because our images are 1080 x 720 we create an image of corresponding size for all images to fit
-    _, axes = plt.subplots(nrows=size, ncols=size, sharex=True, sharey=True, figsize=((1080*size)*px, (720*size)*px))
+    _, axes = plt.subplots(nrows=size, ncols=size, sharex=True, sharey=True, figsize=((756*size)*px, (1008*size)*px))
     axes = axes.flatten()
 
     for img, ax in zip(images, axes):
-        label_file = img.replace("images", "labels").replace(".jpeg", ".txt")
+        label_file = img.replace("images", "labels").replace(".jpg", ".txt")
 
         with open(label_file, "r") as file:
             label = parse_label(file)
@@ -83,7 +79,7 @@ if __name__ == "__main__":
         exit(1)
 
     # list of images in the sets img dir
-    images = glob.glob(f"../data/{set_id}/images/*.jpeg")
+    images = glob.glob(f"../data/{set_id}/images/*.jpg")
     # list of labels in the sets label dir
     labels = glob.glob(f"../data/{set_id}/labels/*.txt")
 
