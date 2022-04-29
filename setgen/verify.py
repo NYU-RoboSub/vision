@@ -24,7 +24,7 @@ def plot(images) -> None:
     axes = axes.flatten()
 
     for img, ax in zip(images, axes):
-        label_file = img.replace("images", "labels").replace(".jpg", ".txt")
+        label_file = img.replace("images", "labels").replace(".jpeg", ".txt")
 
         with open(label_file, "r") as file:
             label = parse_label(file)
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         exit(1)
 
     # list of images in the sets img dir
-    images = glob.glob(f"../data/{set_id}/images/*.jpg")
+    images = glob.glob(f"../data/{set_id}/images/*.jpeg")
     # list of labels in the sets label dir
     labels = glob.glob(f"../data/{set_id}/labels/*.txt")
 
